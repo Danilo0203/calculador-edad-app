@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap");
+@layer base {
+  :root {
+    --primary-purple: 259deg, 100%, 65%;
+    --primary-light-red: 0deg, 100%, 67%;
+    --neutral-White: 0deg, 0%, 100%;
+    --neutral-Off-white: 0deg, 0%, 94%;
+    --neutral-Light-grey: 0deg, 0%, 86%;
+    --neutral-Smokey-grey: 0deg, 1%, 44%;
+    --neutral-Off-black: 0deg, 0%, 8%;
+  }
+  html {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
