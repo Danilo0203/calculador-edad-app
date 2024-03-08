@@ -36,13 +36,13 @@ export const Form = () => {
                 message: "Digito invalido",
               },
               validate: (value) => {
-                return (value = value > 31 ? "Ingrese un dia valido" : false);
+                return (value = value > 31 ? "Ingrese un día valido" : false);
               },
             })}
             autoComplete="off"
           />
           {errors.dia && (
-            <span className="text-sm font-semibold italic text-red-500">
+            <span className="text-xs font-semibold italic text-red-500">
               {typeof errors.dia.message === "string" ? errors.dia.message : ""}
             </span>
           )}
@@ -76,7 +76,7 @@ export const Form = () => {
             autoComplete="off"
           />
           {errors.mes && (
-            <span className="text-sm font-semibold italic text-red-500">
+            <span className="text-xs font-semibold italic text-red-500">
               {typeof errors.mes.message === "string" ? errors.mes.message : ""}
             </span>
           )}
@@ -113,7 +113,7 @@ export const Form = () => {
             autoComplete="off"
           />
           {errors.año && (
-            <span className="text-sm font-semibold italic text-red-500">
+            <span className="text-xs font-semibold italic text-red-500">
               {typeof errors.año.message === "string" ? errors.año.message : ""}
             </span>
           )}
