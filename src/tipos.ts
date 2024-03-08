@@ -1,9 +1,3 @@
-export interface TextoProp {
-  texto: string;
-  max: number;
-  short: string;
-}
-export interface ResultProp {
-  texto: string;
-  result?: string;
-}
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+export interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {}
+export interface SubmitButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
