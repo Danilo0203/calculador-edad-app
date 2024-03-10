@@ -1,11 +1,14 @@
+import { Fecha } from "../tipos";
 import { NumberResult } from "./NumberResult";
 
-export const ResultGroup = () => {
+export const ResultGroup = ({ onFechas }: { onFechas: Fecha }) => {
+  const { dia, mes, año } = onFechas;
+
   return (
     <>
-      <NumberResult texto="años" result="23" />
-      <NumberResult texto="meses" result="5" />
-      <NumberResult texto="días" result="28" />
+      <NumberResult texto="años" result={año} />
+      <NumberResult texto="meses" result={mes} />
+      <NumberResult texto="días" result={dia} />
     </>
   );
 };

@@ -1,16 +1,10 @@
 import { useEffect, useState } from "react";
 
-interface TiposFechas {
-  dia: string;
-  mes: string;
-  año: string;
-}
-
-export const useFechas = ({ dia, mes, año }: TiposFechas) => {
-  const [fecha, setFecha] = useState({ dia, mes, año });
+export const useFechas = (dia: string, mes: string, año: string) => {
+  const [fecha, setFecha] = useState({ dia: "", mes: "", año: "" });
 
   const nuevaFecha = () => {
-    setFecha({ dia: "12", mes: "12", año: "2024" });
+    setFecha({ dia, mes, año });
   };
   useEffect(() => {
     nuevaFecha();

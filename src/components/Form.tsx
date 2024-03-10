@@ -1,7 +1,8 @@
+import { SetCalFechasType } from "../tipos";
 import { SubmitButtons, Label, Input } from "../ui/";
 import { useForm } from "react-hook-form";
 
-export const Form = () => {
+export const Form = ({ setCalFechas }: SetCalFechasType) => {
   const {
     register,
     handleSubmit,
@@ -9,12 +10,13 @@ export const Form = () => {
   } = useForm();
 
   const añoActual = new Date().getFullYear();
-  const datos = handleSubmit((data: object) => {
-    console.log(data);
+  const onSubmit = handleSubmit((data) => {
+    const { dia, mes, año } = data;
+    setCalFechas({ data: { año, dia, mes } });
   });
-  console.log(errors);
+
   return (
-    <form onSubmit={datos}>
+    <form onSubmit={onSubmit}>
       <div className="flex w-full gap-5 md:w-4/5">
         <div className="w-full">
           <Label children="DÍA" htmlFor="dia" />
@@ -36,7 +38,7 @@ export const Form = () => {
                 message: "Digito invalido",
               },
               validate: (value) => {
-                return (value = value > 31 ? "Ingrese un día valido" : false);
+                return (value = value > 31 ? "Ingrese un día valido" : undefined);
               },
             })}
             autoComplete="off"
@@ -53,7 +55,6 @@ export const Form = () => {
             placeholder="MM"
             max={12}
             id="mes"
-            min={1}
             type="number"
             onInput={(e) => {
               const inputElement = e.target as HTMLInputElement;
@@ -68,9 +69,8 @@ export const Form = () => {
                 value: 1,
                 message: "Digito invalido",
               },
-
               validate: (value) => {
-                return (value = value > 12 ? "Ingrese un mes valido" : false);
+                return (value = value > 12 ? "Ingrese un mes valido" : undefined);
               },
             })}
             autoComplete="off"
@@ -87,7 +87,6 @@ export const Form = () => {
             placeholder="AAAA"
             max={2100}
             id="año"
-            min={1}
             type="number"
             onInput={(e) => {
               const inputElement = e.target as HTMLInputElement;
@@ -107,7 +106,7 @@ export const Form = () => {
                 message: "Minimo cuatro digitos",
               },
               validate: (value) => {
-                return value > añoActual ? `No mas de ${añoActual}` : false;
+                return value > añoActual ? `No mas de ${añoActual}` : undefined;
               },
             })}
             autoComplete="off"
