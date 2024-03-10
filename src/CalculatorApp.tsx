@@ -20,7 +20,7 @@ export const CalculatorApp = () => {
     setCalcFechas({ año: años, dia: dias, mes: meses });
   };
   return (
-    <article className="min-w-full rounded-t-3xl rounded-bl-3xl rounded-br-[5rem] bg-neutralWhite px-4 py-12 md:flex md:flex-col md:px-10">
+    <article className="min-w-full rounded-t-3xl rounded-bl-3xl rounded-br-[8rem] bg-neutralWhite  px-4 py-12 sm:rounded-br-[10rem] md:flex md:flex-col md:px-10 lg:rounded-br-[14rem]">
       <Form setCalFechas={fechas} />
       <ResultGroup onFechas={calcFechas} />
     </article>
