@@ -19,8 +19,9 @@ export const Form = ({ setCalFechas }: SetCalFechasType) => {
     <form onSubmit={onSubmit}>
       <div className="flex w-full gap-5 md:w-4/5">
         <div className="w-full">
-          <Label children="DÍA" htmlFor="dia" />
+          <Label children="DÍA" htmlFor="dia" error={errors.dia ? true : false} />
           <Input
+            error={errors.dia ? true : false}
             placeholder="DD"
             id="dia"
             type="number"
@@ -44,14 +45,15 @@ export const Form = ({ setCalFechas }: SetCalFechasType) => {
             autoComplete="off"
           />
           {errors.dia && (
-            <span className="text-xs font-semibold italic text-red-500">
+            <p className="pt-1 text-[0.6rem] font-semibold italic leading-3 text-red-500 md:text-[0.7rem] 2xl:text-sm">
               {typeof errors.dia.message === "string" ? errors.dia.message : ""}
-            </span>
+            </p>
           )}
         </div>
         <div className="w-full">
-          <Label children="MES" htmlFor="mes" />
+          <Label children="MES" htmlFor="mes" error={errors.mes ? true : false} />
           <Input
+            error={errors.mes ? true : false}
             placeholder="MM"
             max={12}
             id="mes"
@@ -76,14 +78,15 @@ export const Form = ({ setCalFechas }: SetCalFechasType) => {
             autoComplete="off"
           />
           {errors.mes && (
-            <span className="text-xs font-semibold italic text-red-500">
+            <p className="pt-1 text-[0.6rem] font-semibold italic leading-3 text-red-500 md:text-[0.7rem] 2xl:text-sm">
               {typeof errors.mes.message === "string" ? errors.mes.message : ""}
-            </span>
+            </p>
           )}
         </div>
         <div className="w-full">
-          <Label children="AÑO" htmlFor="año" />
+          <Label children="AÑO" htmlFor="año" error={errors.año ? true : false} />
           <Input
+            error={errors.año ? true : false}
             placeholder="AAAA"
             max={2100}
             id="año"
@@ -112,9 +115,9 @@ export const Form = ({ setCalFechas }: SetCalFechasType) => {
             autoComplete="off"
           />
           {errors.año && (
-            <span className="text-xs font-semibold italic text-red-500">
+            <p className="pt-1 text-[0.6rem] font-semibold italic leading-3 text-red-500 md:text-[0.7rem] 2xl:text-sm">
               {typeof errors.año.message === "string" ? errors.año.message : ""}
-            </span>
+            </p>
           )}
         </div>
       </div>
