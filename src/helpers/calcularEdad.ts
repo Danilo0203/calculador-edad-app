@@ -1,7 +1,6 @@
 import { obtenerCumpleañosDeEsteAño, obtenerAños, obtenerMeses, obtenerDias } from "./logica-calculo-edad";
 
 export const calcularEdad = (fechaDeNacimiento: string) => {
-  console.log(fechaDeNacimiento);
   const fechaActual = new Date();
   const nacimiento = new Date(fechaDeNacimiento);
   const ahora = new Date(fechaActual.getTime());

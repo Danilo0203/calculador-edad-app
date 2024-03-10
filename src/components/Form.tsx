@@ -1,3 +1,4 @@
+import { Toaster, toast } from "sonner";
 import { SetCalFechasType } from "../tipos";
 import { SubmitButtons, Label, Input } from "../ui/";
 import { useForm } from "react-hook-form";
@@ -10,8 +11,21 @@ export const Form = ({ setCalFechas }: SetCalFechasType) => {
   } = useForm();
 
   const añoActual = new Date().getFullYear();
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth() + 1; // Se suma 1 porque los meses en JavaScript son base 0
   const onSubmit = handleSubmit((data) => {
     const { dia, mes, año } = data;
+    if (currentYear === +año && currentMonth < +mes) {
+      return toast.error(
+        <div className="flex items-center justify-center gap-2">
+          <div className="text-xl">🚩</div>
+          <p className="text-sm font-semibold">
+            No puede ingresar un <b>MES</b> posterior al actual.
+          </p>
+        </div>,
+      );
+    }
     setCalFechas({ data: { año, dia, mes } });
   });
 
@@ -109,7 +123,7 @@ export const Form = ({ setCalFechas }: SetCalFechasType) => {
                 message: "Minimo cuatro digitos",
               },
               validate: (value) => {
-                return value > añoActual ? `No mas de ${añoActual}` : undefined;
+                return value > añoActual ? `Máxmimo ${añoActual}` : undefined;
               },
             })}
             autoComplete="off"
@@ -122,6 +136,7 @@ export const Form = ({ setCalFechas }: SetCalFechasType) => {
         </div>
       </div>
       <SubmitButtons type="submit" />
+      <Toaster position="top-center" duration={8000} richColors />
     </form>
   );
 };
