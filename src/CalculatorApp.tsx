@@ -6,12 +6,18 @@ import { calcularEdad } from "./helpers/calcularEdad";
 
 export const CalculatorApp = () => {
   const [calcFechas, setCalcFechas] = useState({ dia: "", mes: "", año: "" });
+
   // Función para eliminar ceros de un número
   const eliminarCeros = (valor: string) => {
     return parseInt(valor, 10).toString().trim();
   };
+
   const fechas = ({ data }: TipoData) => {
     const { año, dia, mes } = data;
+    if (año === "") {
+      setCalcFechas({ año: "- -", mes: "- -", dia: "- -" });
+      return;
+    }
     const añoFormateado = eliminarCeros(año);
     const diaFormateado = eliminarCeros(dia);
     const mesFormateado = eliminarCeros(mes);

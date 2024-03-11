@@ -6,9 +6,9 @@ export const ResultGroup = ({ onFechas }: { onFechas: Fecha }) => {
 
   return (
     <>
-      <NumberResult texto="años" result={año} />
-      <NumberResult texto="meses" result={mes} />
-      <NumberResult texto="días" result={dia} />
+      <NumberResult texto='años' result={año} />
+      <NumberResult texto='meses' result={mes} />
+      <NumberResult texto='días' result={dia} />
     </>
   );
 };

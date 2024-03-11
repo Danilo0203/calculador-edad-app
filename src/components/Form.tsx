@@ -2,6 +2,7 @@ import { Toaster, toast } from "sonner";
 import { SetCalFechasType } from "../tipos";
 import { SubmitButtons, Label, Input } from "../ui/";
 import { useForm } from "react-hook-form";
+import { format } from "@formkit/tempo";
 
 export const Form = ({ setCalFechas }: SetCalFechasType) => {
   const {
@@ -10,21 +11,25 @@ export const Form = ({ setCalFechas }: SetCalFechasType) => {
     formState: { errors },
   } = useForm();
 
-  const añoActual = new Date().getFullYear();
-  const currentDate = new Date();
-  const currentYear = currentDate.getFullYear();
-  const currentMonth = currentDate.getMonth() + 1; // Se suma 1 porque los meses en JavaScript son base 0
+  const date = new Date();
+  const añoActual = date.getFullYear();
+
   const onSubmit = handleSubmit((data) => {
     const { dia, mes, año } = data;
-    if (currentYear === +año && currentMonth < +mes) {
-      return toast.error(
+    const fechaRecibida = new Date(`${mes}-${dia}-${año}`);
+    const fechaActual = date;
+
+    if (fechaRecibida > fechaActual) {
+      setCalFechas({ data: { dia: "", mes: "", año: "" } });
+      toast.error(
         <div className="flex items-center justify-center gap-2">
           <div className="text-xl">🚩</div>
           <p className="text-sm font-semibold">
-            No puede ingresar un <b>MES</b> posterior al actual.
+            No puede ingresar una <b>FECHA</b> mayor de <b> {format(date, "medium")}</b>
           </p>
         </div>,
       );
+      return;
     }
     setCalFechas({ data: { año, dia, mes } });
   });
@@ -136,7 +141,7 @@ export const Form = ({ setCalFechas }: SetCalFechasType) => {
         </div>
       </div>
       <SubmitButtons type="submit" />
-      <Toaster position="top-center" duration={8000} richColors />
+      <Toaster position="top-center" duration={3000} richColors />
     </form>
   );
 };
