@@ -74,7 +74,6 @@ export const Form = ({ setCalFechas }: SetCalFechasType) => {
           <Input
             error={errors.mes ? true : false}
             placeholder="MM"
-            max={12}
             id="mes"
             type="number"
             onInput={(e) => {
